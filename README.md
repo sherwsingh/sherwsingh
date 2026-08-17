@@ -105,6 +105,82 @@ Simba is intentionally maintained as a separate system from Mufasa so that rules
 
 A PowerShell-based command environment for launching and managing my development and trading tools.
 
+## 🏗️ System Architecture
+
+Mufasa and Simba are maintained as separate market-specific systems, but both follow the same general engineering principle: separate market data, analysis, signal qualification, risk controls and performance evaluation into distinct stages.
+
+```mermaid
+flowchart TD
+
+    A["MetaTrader 5"] --> B["Market Data Layer"]
+
+    B --> C1["🐆 Mufasa<br/>XAUUSD"]
+    B --> C2["🦁 Simba<br/>US30 / DJ30"]
+
+    C1 --> D1["M1 · M5 · M15 · H1 · H4"]
+    C2 --> D2["M1 · M5 · M15 · H1"]
+
+    D1 --> E1["XAUUSD Analysis Engine"]
+    D2 --> E2["US30 Analysis Engine"]
+
+    E1 --> F1["Trend & Indicators"]
+    E1 --> F2["Market Structure"]
+    E1 --> F3["Liquidity & S/R"]
+    E1 --> F4["Harmonics / PRZ"]
+
+    E2 --> G1["Market Structure"]
+    E2 --> G2["Support & Resistance"]
+    E2 --> G3["Harmonics / PRZ"]
+    E2 --> G4["Session & Volatility Logic"]
+
+    F1 --> H1["Mufasa Signal Qualification"]
+    F2 --> H1
+    F3 --> H1
+    F4 --> H1
+
+    G1 --> H2["Simba Signal Qualification"]
+    G2 --> H2
+    G3 --> H2
+    G4 --> H2
+
+    H1 --> I1["Directional, Confirmation<br/>& Risk Gates"]
+    H2 --> I2["Session, Confirmation<br/>& Risk Gates"]
+
+    I1 --> J1{"Valid Signal?"}
+    I2 --> J2{"Valid Signal?"}
+
+    J1 -->|Yes| K1["Grade / Confidence<br/>Entry Monitoring"]
+    J1 -->|No| L1["Rejected Signal"]
+
+    J2 -->|Yes| K2["Qualified Signal<br/>Entry Monitoring"]
+    J2 -->|No| L2["Rejected Signal"]
+
+    K1 --> M["Alerts & Journalling"]
+    L1 --> M
+    K2 --> M
+    L2 --> M
+
+    M --> N["Performance Evaluation"]
+
+    N --> O["Forward Testing"]
+    O --> P["Rule Refinement"]
+
+    P -.-> E1
+    P -.-> E2
+```
+
+### Design principles
+
+* **Market-specific logic:** Mufasa and Simba maintain separate rules rather than assuming behaviour transfers between XAUUSD and US30.
+* **Closed-candle confirmation:** Completed candles are used for confirmed analytical decisions, while live price can be handled separately for monitoring and execution timing.
+* **Modular analysis:** Indicators, structure, liquidity, harmonic analysis and other components contribute to qualification rather than acting as isolated trade triggers.
+* **Explicit rejection:** Failed setups are logged as useful data instead of simply disappearing from the system.
+* **Separation of analysis and execution:** Signal generation can be developed and evaluated independently from automated order execution.
+* **Continuous evaluation:** Journalling and forward-testing results feed back into later rule refinement.
+
+The objective is not to generate as many signals as possible. The systems are designed to produce decisions that can be explained, reproduced, rejected when necessary and evaluated against real forward-testing results.
+
+
 ## Technologies
 
 - Python
