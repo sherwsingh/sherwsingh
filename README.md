@@ -1,8 +1,10 @@
 # Hi, I'm Sher 👋
 
-I'm a London-based developer, algorithmic-trading enthusiast and former professional chef.
+I'm Sher, a London-based developer building explainable algorithmic-trading and market-analysis systems with Python and MetaTrader 5.
 
-I am currently building structured market-analysis tools using Python, MetaTrader 5 and multi-timeframe price data.
+My current work focuses on multi-timeframe market analysis, signal qualification, risk controls, testing and trading-system automation.
+
+Before moving into development, I worked in professional kitchens and senior kitchen leadership, which heavily influenced how I approach systems: preparation, structure, consistency and constant refinement.
 
 ## Current Projects
 
