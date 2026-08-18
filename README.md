@@ -100,7 +100,6 @@ Simba is intentionally maintained as a separate system from Mufasa so that rules
 
 **Current status:** Alert-only and under development. Automated execution will only be considered after sufficient forward testing and validation.
 
-
 ### 💻 SherShell
 
 A PowerShell-based command environment for launching and managing my development and trading tools.
