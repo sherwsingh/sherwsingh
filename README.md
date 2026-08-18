@@ -181,13 +181,21 @@ The objective is not to generate as many signals as possible. The systems are de
 
 
 ## Technologies
+## 🛠️ Technologies
 
 - Python
 - MetaTrader 5
 - PowerShell
-- Git and GitHub
-- Algorithmic trading systems
+- Git
+- GitHub
+
+## 📊 Areas
+
+- Algorithmic trading
 - Market-data analysis
+- Technical analysis
+- Automation
+- Trading-system evaluation
 
 ## Current Focus
 
