@@ -69,7 +69,7 @@ Particular attention is given to the change in US30 behaviour around the New Yor
 
 Simba is intentionally maintained as a separate system from Mufasa so that rules developed for XAUUSD are not automatically assumed to apply to an equity index.
 
-**Current status:** Alert-only and under development. Automated execution will only be considered after sufficient forward testing and validation.### 🦁 Simba
+**Current status:** Alert-only and under development. Automated execution will only be considered after sufficient forward testing and validation.
 
 **US30 / DJ30 session-aware market scanner built for MetaTrader 5.**
 
